@@ -9,7 +9,7 @@ RUN yum -y install gcc-c++ snappy \
     && make install-shared \
     && ln -s /usr/lib64/libbz2.so.1 /usr/lib64/libbz2.so \
     && ln -s /usr/lib64/libsnappy.so.1 /usr/lib64/libsnappy.so \
-    && CGO_CFLAGS="-I/go/vendor/rocksdb/include" CGO_LDFLAGS="-L/usr/lib64" go get github.com/tecbot/gorocksdb 
+    && go get github.com/tecbot/gorocksdb 
     && rm -rf /go/vendor
 
 WORKDIR /go
