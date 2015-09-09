@@ -6,14 +6,11 @@ RUN yum -y install gcc-c++ snappy \
     && git clone https://github.com/facebook/rocksdb /go/vendor/rocksdb \
     && cd /go/vendor/rocksdb \
     && git checkout v3.13.1 \ 
-    && make shared_lib \
-    && cp librocksdb.so.3.13.1 /usr/lib64 \
-    && ln -s /usr/lib64/librocksdb.so.3.13.1 /usr/lib64/librocksdb.so \
-    && ln -s /usr/lib64/librocksdb.so.3.13.1 /usr/lib64/librocksdb.so.3 \
-    && ln -s /usr/lib64/librocksdb.so.3.13.1 /usr/lib64/librocksdb.so.3.13 \
+    && make install-shared \
     && ln -s /usr/lib64/libbz2.so.1 /usr/lib64/libbz2.so \
     && ln -s /usr/lib64/libsnappy.so.1 /usr/lib64/libsnappy.so \
     && CGO_CFLAGS="-I/go/vendor/rocksdb/include" CGO_LDFLAGS="-L/usr/lib64" go get github.com/tecbot/gorocksdb 
+    && rm -rf /go/vendor
 
 WORKDIR /go
 
