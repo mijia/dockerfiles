@@ -7,7 +7,7 @@ RUN yum -y install gcc-c++ snappy \
     && cd /tmp/vendor/rocksdb \
     && git checkout v3.13.1 \ 
     && make install-shared \
-    && cp -P /usr/local/lib/librocks.so* /usr/lib64 \
+    && cp -P /usr/local/lib/librocksdb.so* /usr/lib64 \
     && ln -s /usr/lib64/libbz2.so.1 /usr/lib64/libbz2.so \
     && ln -s /usr/lib64/libsnappy.so.1 /usr/lib64/libsnappy.so \
     && rm -rf /tmp/vendor \
