@@ -10,6 +10,5 @@ RUN yum -y install gcc-c++ snappy \
     && ln -s /usr/lib64/libbz2.so.1 /usr/lib64/libbz2.so \
     && ln -s /usr/lib64/libsnappy.so.1 /usr/lib64/libsnappy.so \
     && rm -rf /tmp/vendor \
-    && yum -y erase gcc-c++
 
 WORKDIR /go
